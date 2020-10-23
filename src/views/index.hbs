@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <!-- Algumas tags nao tem fechamento padrao como <meta> -->
+    <!-- metadata são configuracaoes do documento -->
+    <!-- UTF-8 é a codificacao mais utilizada-->
+    <!-- Alt+z permite quebra de texto na visualizacao -->
+    <meta charset="UTF-8">
+    <!-- da o nome da meta e permite que o documento adapte para telas menores-->
+    <!-- a meta viewport é importante na aplicacao do @media-->
+    <meta name="viewport" content="width=devide-width, initial scale=1.0">
+    <title>Happy - NLW#3</title>
+    <!-- href faz um link entre um caminho-->
+    <!-- ./ quer dizer que estamos no diretorio raiz da aplicacao -->
+    <link rel="icon" href="/images/logo-icon.png">
+    <!-- faz a conexao com o css -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/animations.css">
+    <link rel="stylesheet" href="/css/page-landing.css">
+    <!-- importacao de fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<!-- estrutura "óssea" do projeto-->
+<!-- uma pagina bem montada tem boa acessibilidade e boa busca nos mecanismos de pesquisa-->
+
+<!-- o id é global, pode ser utilizada em qualquer tag e deve ser unico -->
+
+<body id="body">
+    <div id="page-landing">
+        <div id="container">
+            <!-- define o cabeçlho da aplciacao-->
+            <header>
+                <!-- tag que tem fechamento nela mesma-->
+                <!-- SVG é escrito em html compativel com diferentes tamanhos de tela dando maior qualidade para a imagem-->
+                <!-- os mecanismos de busca lêem o atributo alt, o que melhora os resultados de busca da aplicacao -->
+                <!-- caso a img nao abra o alt é mostrado em tela-->
+                <img class="animate-up" id="logo" src="/images/logo.svg" alt="Logomarca de Happy">
+
+                <!-- div é um container generico, pode conter diferentes tipos de conteudo -->
+                <!-- elementos podem ter mais de uma classe, basta colocar os nomes de cada classe separados por espaço -->
+                <div class="location animate-up">
+                    <!-- tem o objetivo de deixar o texto em negrito-->
+                    <strong>Ouro Preto</strong>
+                    <!-- <p> é uma tag de paragrafo -->
+                    <p>Minas Gerais</p>
+                </div>
+
+                <!-- algumas tags tem display de block (bloco) ocupando uma linha inteira como <header> <img> <div> <p> -->
+                <!-- outras tem o display inline, como <strong>, ocupando apenas o tamanho de seu conteudo-->
+            </header>
+
+            <!-- na tag <main> colocamos o conteudo principal da pagina -->
+            <main>
+                <!-- tag de titulos de display block -->
+                <!-- <h1> <h2> ... <h6> definem prioridade para os titulos-->
+                <h1 class="animate-up">Leve felicidade para o mundo</h1>
+
+                <section class="visit">
+                    <p class="animate-up">Visite lares e mude o dia de muitas crianças</p>
+                    <!-- title tambem é um atributo importante das tags para que o site seja melhor encontrado nos motores de buscas e para acessibildiade -->
+                    <a href="/orphanages" title="Visite orfanatos" class="animate-up">
+                        <img src="/images/arrow.svg" alt="Ir para o mapa">
+                    </a>
+                </section>
+            </main>
+        </div>
+    </div>
+
+</body>
+
+</html>

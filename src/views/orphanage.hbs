@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <!-- Algumas tags nao tem fechamento padrao como <meta> -->
+    <!-- metadata são configuracaoes do documento -->
+    <!-- UTF-8 é a codificacao mais utilizada-->
+    <!-- Alt+z permite quebra de texto na visualizacao -->
+    <meta charset="UTF-8">
+    <!-- da o nome da meta e permite que o documento adapte para telas menores-->
+    <!-- a meta viewport é importante na aplicacao do @media-->
+    <meta name="viewport" content="width=devide-width, initial scale=1.0">
+    <title>Happy | Detalhes do orfanato{{orphanage.name}}</title>
+    <!-- link da biblioteca de mapas interativos -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+     <!-- Make sure you put this AFTER Leaflet's CSS -->
+     <!-- esse script está escrito de maneira que nao quebra a aplicacao -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+    <!-- href faz um link entre um caminho-->
+    <!-- ./ quer dizer que estamos no diretorio raiz da aplicacao -->
+    <link rel="icon" href="/images/logo-icon.png">
+    <!-- faz a conexao com o css -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/animations.css">
+    <link rel="stylesheet" href="/css/page-orphanage.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
+    <link rel="stylesheet" href="/css/map.css">
+    <link rel="stylesheet" href="/css/buttons.css">
+
+
+    <!-- importacao de fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<!-- estrutura "óssea" do projeto -->
+<!-- uma pagina bem montada tem boa acessibilidade e boa busca nos mecanismos de pesquisa-->
+
+<!-- o id é global, pode ser utilizada em qualquer tag e deve ser unico -->
+
+<body id="body">
+    <div id="page-orphanage">
+        <aside class="animate-right sidebar">
+            <img src="/images/map-marker.svg" alt="Logomarca Happy">
+            <footer>
+                <!-- utiliza o historico para voltar para a pagina anterior -->
+                <button onclick="history.back()">
+                    <img src="/images/arrow-back.svg" alt="Voltar">
+                </button>
+            </footer>
+        </aside>
+
+        <main class="animate-appear with-sidebar">
+            <div class="orphanage-details">
+                <img src="{{orphanage.firstImage}}" alt="{{orphanage.name}}">
+                
+                <!-- podemos usar para as imagens um serviço em nuvem que fornece source para as imagens, basta seleciona-las po id -->
+                <!-- src="https://source.unsplash.com/radom?id=1 ... n"-->
+                <div class="images">
+                    {{#each orphanage.images}}
+                        <button onclick="selectImage(event)" class="active" type="button">
+                            <img src= "{{this}}" alt="{{orphanage.name}}">
+                        </button>
+                    {{/each}}
+                    
+                </div>
+
+                <div class="orphanage-details-content">
+                    <h1>{{orphanage.name}}</h1>
+                    <p>{{orphanage.about}}</p>
+                    
+                    
+                    <div class="map-container">
+                        <div id="mapid">
+                            <span
+                                data-lat="{{orphanage.lat}}"
+                                data-lng="{{orphanage.lng}}"
+                            ></span>
+                        </div>
+    
+                        <footer>
+                            <a 
+                                target="_blank"
+                                href="https://maps.google.com/mobile?q={{orphanage.lat}},{{orphanage.lng}}&z=10">Ver rotas no mapa</a>
+                        </footer>
+                    </div>
+    
+                    <!-- <hr> é uma tag que coloca uma linha no meio da tela -->
+                    <hr>
+    
+                    <h2>Instruções para visita</h2>
+    
+                    <p>{{orphanage.instructions}}</p>
+                    
+                    <div class="open-details">
+                        <div class="hour">
+                            <img src="/images/clock.svg" alt="Horários">
+                            {{orphanage.opening_hours}}
+                        </div>
+    
+                        {{#if orphanage.open_on_weekends}}
+                            <div class="open-on-weekends open">
+                                <img src="/images/info.svg" alt="Informações">
+                                Atendemos fim de semana
+                            </div>
+                            {{else}}
+                                <div class="open-on-weekends closed">
+                                    <img src="/images/info-red.svg" alt="Informações">
+                                    Não atendemos fim de semana
+                                </div>
+                        {{/if}}
+
+                    </div>
+    
+                    <a href="https://api.whatsapp.com/send?1=pt-BR$phone={{orphanage.whatsapp}}&text=Olá, gostaria de conversar sobre visitas ao {{orphanage.name }}" class="primary-button" type="button" target= "_blank"
+                        <img src="/images/whatsapp.svg" alt="Chamar no whatsapp">
+                        Entre em contato
+                    </a>
+                </div>
+            </div>
+        </main>       
+    </div>
+
+    <!-- é interessante colocar os scripts ao fim do body para que nao interrompam a aplicacao -->
+    <script src="/scripts/page-orphanage.js"></script>
+</body>
+
+</html>

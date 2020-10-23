@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <!-- Algumas tags nao tem fechamento padrao como <meta> -->
+    <!-- metadata são configuracaoes do documento -->
+    <!-- UTF-8 é a codificacao mais utilizada-->
+    <!-- Alt+z permite quebra de texto na visualizacao -->
+    <meta charset="UTF-8">
+    <!-- da o nome da meta e permite que o documento adapte para telas menores-->
+    <!-- a meta viewport é importante na aplicacao do @media-->
+    <meta name="viewport" content="width=devide-width, initial scale=1.0">
+    <title>Happy | Localize um orfanato</title>
+    <!-- link da biblioteca de mapas interativos -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+     <!-- Make sure you put this AFTER Leaflet's CSS -->
+     <!-- esse script está escrito de maneira que nao quebra a aplicacao -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+    <!-- href faz um link entre um caminho-->
+    <!-- ./ quer dizer que estamos no diretorio raiz da aplicacao -->
+    <link rel="icon" href="/images/logo-icon.png">
+    <!-- faz a conexao com o css -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/animations.css">
+    <link rel="stylesheet" href="/css/page-orphanages.css">
+    <!-- importacao de fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<!-- estrutura "óssea" do projeto -->
+<!-- uma pagina bem montada tem boa acessibilidade e boa busca nos mecanismos de pesquisa-->
+
+<!-- o id é global, pode ser utilizada em qualquer tag e deve ser unico -->
+
+<body id="body">
+    <div id="page-orphanages">
+        <aside class="animate-right">
+            <header>
+                <img src="/images/map-marker.svg" alt="Logomarca Happy">
+                
+                <h2>Escolha um orfanato no mapa</h2>
+                
+                <p>Muitas crianças estão esperando sua visita :)</p>
+            </header>
+
+            <footer>
+                <strong>Ouro Preto</strong>
+                <p>Minas Gerais</p>
+            </footer>
+        </aside>
+
+        <div id="mapid" class="animate-appear">
+
+            <div class="orphanages"
+                <!-- pega os dados do banco de dados e coloca em um span hidden -->
+                {{#each orphanages}}
+                    <span hidden
+                        data-id="{{this.id}}"
+                        data-name="{{this.name}}"
+                        data-lat="{{this.lat}}"
+                        data-lng="{{this.lng}}">
+                    </span>
+                {{/each}}
+            </div>
+
+            <a href="./create-orphanage" class="create-orphanage" title="Cadastre um orfanato">
+                <img src="/images/plus.svg" alt="Criar orfanato">
+            </a>
+        </div>
+    </div>
+
+    <!-- é interessante colocar os scripts ao fim do body para que nao interrompam a aplicacao -->
+    <script src="/scripts/page-orphanages.js"></script>
+</body>
+
+</html>

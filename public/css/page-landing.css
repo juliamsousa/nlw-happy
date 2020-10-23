@@ -1,0 +1,143 @@
+/* # seletor de id*/
+
+#body {
+    height: 100vh;
+    color: white;
+}
+
+#page-landing {
+    /* short hand podemos colocar diversos valores para o atributo background juntos */
+    /* funcao de gradiente com a cor inicial e cor final, assim como o grau de transicao*/
+    /* o atributo no-repeat impede que o estilo se repita para cobrir toda extensao da tela, de modo que temos apenas um gradiente */
+    background: linear-gradient(329.54deg, #29b6d1 0%, #00c7c7 100%) no-repeat;
+    /* alinha todos os textos ao centro */
+    text-align: center;
+    min-height: 100vh;
+    /* o display flex (dentro da caixa) se sobrepõe aos displays blox e inline(fora da caixa)*/
+    /* alinha os elementos lado a lado */
+    /* os elementos se alinham ao centro verticalmente*/
+    display: flex;
+}
+
+/* define uma margem automatica para o container que se ajusta de acordo com o tamanho da tela */
+/* os elementos de alinham no centro horizontalmente */
+#container {
+    /* esse alinhamento so funciona horizontal/verticalmente quando temos o display flex */
+    /* margin é um short hand, agrupa top, bottom, left, right */
+    margin: auto;
+    /* agora temos a lateralidade do container facilitando o calculo de seu tamanho automatico */
+    width: min(90%, 112rem);
+}
+
+/* layout mobile first, ou seja, cria para dispositivos móveis e migra para desktop*/
+
+.location,
+h1,
+.visit p {
+    height: 16vh;
+}
+
+main h1 {
+    /* a funcao clamp ajusta o elemento de acordo com os tamanhos passados como parametro */
+    /* o primeiro parametro é o valor minimo, o segundo o valor que eu quero (ideal) e por utlimo o valor maximo que o elemento pode chegar*/
+    font-size: clamp(4rem, 8vw, 8.4rem);
+    animation-delay: 150ms;
+    line-height: .88;
+    margin: clamp(10% 9vh 12%) 0 4rem;
+}
+
+.visit a {
+    width: 8rem;
+    height: 8rem;
+    background: #ffd666;
+    border: none;
+    border-radius: 3rem;
+
+    display: flex;
+    /* alinha no eixo x*/
+    align-items: center;
+    /* alinha no eixo y*/
+    justify-content: center;
+    margin: auto;
+
+    transition: background 200ms;
+    animation-delay: 250ms;
+}
+
+/* define uma estilizacao para quando o mouse passa em cima do link*/
+.visit a:hover {
+    background: #96feff;
+}
+
+/* define delays diferentes para os elementos para que apareçam um de cada vez */
+#logo {
+    animation-delay: 50ms;
+}
+
+.location {
+    animation-delay: 100ms;
+}
+
+.visit p {
+    animation-delay: 250ms;
+}
+
+/* versao desktop */
+
+/* regra at@, só se aplica quando a condicao for verdadeira */
+
+@media (min-width: 760px) {
+    #container {
+        /* shorthand background: image repeat positon/size */
+        background: url("../images/bg.svg") no-repeat;
+        background-size: 60% clamp(30rem, 54vw, 50rem);
+        /* short hand de eixo x e y */
+        background-position: center;
+        /* aumenta o tamanho interno da caixa para resolver o corte da imagem de background */
+        padding: 5rem 2rem;
+    }
+
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .location,
+    h1,
+    .visit p {
+        height: initial;
+        text-align: initial;
+    }
+
+    .location {
+        /* alinha a direita semelhante ao aolinhamento do word */
+        text-align: right;
+        font-size: 2.4rem;
+        line-height: 1.5;
+    }
+
+    main h1 {
+        font-weight: bold;
+        font-size: clamp(4rem, 8vw, 7rem);
+        line-height: .88;
+        margin: clamp(10% 9vh 12%) 0 4rem;
+        /* como ja temos uma limitacao para o tamanho maximo, colocamos um minimo para a largura*/
+        width: min(300px, 80%);
+    }
+
+    .visit {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .visit p {
+        font-size: 2.4rem;
+        line-height: 1.5;
+        width: clamp(20rem, 20vw, 30rem);
+    }
+
+    .visit a {
+        margin: initial;
+    }
+}

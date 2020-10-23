@@ -1,0 +1,45 @@
+/* em main colocamos as estilziacaoes que aplicam para todas as telas */
+/* propriedades css sao compostas por seletor, propriedade e valor */
+/* com a cascata a importancia da regra sempre será a ultima escrita */
+/* styles no html tem mais forca que no stylesheet */
+/* quando utilizamos seletores especificos o css possui maior prioridade */
+/* !important podemos utilizar esse especificador para aumentar a importancida de um atributo */
+
+/* seletor universal para retirar preenchimentos padroes */
+
+* {
+    margin: 0px;
+    padding: 0px;
+    /* faz o calculo do tamnaho da caixa de borda a borda*/
+    box-sizing: border-box;
+}
+
+/* em e rem são medidas de teamanho de fonte relativas*/
+/* em busca o tamanho do elemnto pai dele*/
+/* (root) rem busca o tamanho do elemnto raiz*/
+/* seletor do elemento raiz */
+
+body {
+    height: 100vh;
+    color: white;
+    background: #ebf2f5;
+}
+
+:root {
+    /* define 1rem como 10px */
+    /* podemos definir tambem 62.5% pois, 100%=16px ... 10px=62.5%*/
+    /* com isso podemos usar potencia de 10 para definir os tamanhos das fontes */
+    font-size: 10px;
+}
+
+body,
+input,
+button,
+textarea {
+    font: 400 1.8rem/1 'Nunito', sans-serif;
+    /* short hand dos seguintes atributos:
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    font-size: 18px; 
+    line-height: 1;*/
+}

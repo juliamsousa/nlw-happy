@@ -1,0 +1,57 @@
+/* animacoes */
+
+/* cria uma animacao deascensao para os elementos*/
+@keyframes up {
+    from {
+        opacity: 0;
+        /* valores positivos translada para baixo e valores negatiovs translada para cima */
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* cria uma animacao para que a aba transicione da esquerda para direita */
+@keyframes right {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* criar animacao para o mapa da pagina de orfanatos */
+@keyframes appear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity:1;
+    }   
+}
+
+/* cria uma classe que pode ser utilizada no html */
+.animate-up {
+    animation-name: up;
+    animation-duration: 300ms;
+    animation-fill-mode: backwards;
+}
+
+/* cria uma classe para a animacao que pode ser utilizada no html*/
+
+.animate-right {
+    animation-name: right;
+    animation-duration: 300ms;   
+}
+
+/* classe da animacao appear */
+.animate-appear {
+    animation-name: appear;
+    animation-duration: .3s;
+    /* altera a opacidae de 0 a 1 suavemente */
+    animation-fill-mode: backwards;
+}
